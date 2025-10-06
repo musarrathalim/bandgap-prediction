@@ -49,13 +49,10 @@ Optionally, a secondary dataset (`matbench_expt_gap`) can be used to test model 
 
 ---
 
-## ⚙️ Methodology
+### 🧪 Methodology Overview
 
-### 1. **Data Preparation**
-```python
-from matminer.datasets import load_dataset
-from pymatgen.core.composition import Composition
-
-df = load_dataset("matbench_bandgap")
-df = df.dropna()
-df["composition"] = df["formula"].apply(Composition)
+1. **Data Collection** – Dataset obtained from Matminer’s materials database (e.g., bandgap dataset).
+2. **Data Cleaning** – Removed missing values, standardized formulae.
+3. **Feature Engineering** – Applied `ElementProperty` featurizer (Magpie preset) to convert chemical composition into numerical descriptors.
+4. **Modeling** – Trained multiple regression models (Random Forest, XGBoost) to predict bandgap energy.
+5. **Evaluation** – Compared performance using MAE, RMSE, and R² metrics.
